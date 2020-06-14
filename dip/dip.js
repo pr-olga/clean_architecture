@@ -7,7 +7,7 @@ class Store {
    * @param {string} customer
    * @param {string} payment
    */
-  constructor(customer, payment) {
+  constructor (customer, payment) {
     this.customer = new Customer(customer)
     this.payment = new PaymentProcessor(this.customer, payment)
   }
@@ -16,7 +16,7 @@ class Store {
    * Buy jeans
    * @param {number} quantity
    */
-  purchaseJeans(quantity) {
+  purchaseJeans (quantity) {
     this.payment.pay(quantity)
   }
 
@@ -24,7 +24,7 @@ class Store {
    * Buy books
    * @param {number} quantity
    */
-  purchaseBooks(quantity) {
+  purchaseBooks (quantity) {
     this.payment.pay(quantity)
   }
 }
@@ -33,7 +33,7 @@ class Store {
  * Class representing customer
  */
 class Customer {
-  constructor(name) {
+  constructor (name) {
     this.name = name
   }
 }
@@ -48,7 +48,7 @@ class PaymentProcessor {
    * @param {string} customer
    * @param {string} payment
    */
-  constructor(customer, payment) {
+  constructor (customer, payment) {
     this.customer = customer
     this.payment = payment
   }
@@ -58,18 +58,18 @@ class PaymentProcessor {
    * @param {number} quantity
    *
    */
-  pay(quantity) {
+  pay (quantity) {
     let payment = null
 
     switch (this.payment) {
       case 'Stripe':
-        payment = new Stripe
+        payment = new Stripe()
         break
       case 'PayPal':
-        payment = new PayPal
+        payment = new PayPal()
         break
       case 'Cash':
-        payment = new Cash
+        payment = new Cash()
         break
       default:
         break
@@ -85,19 +85,19 @@ class PaymentProcessor {
 }
 
 class Stripe {
-  makePayment(user, quantity) {
+  makePayment (user, quantity) {
     console.log(`${user.name} paid for ${quantity} amounts by Stripe ($)`)
   }
 }
 
 class PayPal {
-  makePayment(user, quantity) {
+  makePayment (user, quantity) {
     console.log(`${user.name} paid for ${quantity} amounts by PayPal (Euro)`)
   }
 }
 
 class Cash {
-  makePayment(user, quantity) {
+  makePayment (user, quantity) {
     console.log(`${user.name} paid for ${quantity} amounts in cash (Rubles)`)
   }
 }
