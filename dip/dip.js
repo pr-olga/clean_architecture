@@ -1,7 +1,7 @@
 /**
  * Class representing the buying process
  */
-class Store {
+export class Store {
   /**
    * Create Customer and Payment
    * @param {string} customer
@@ -32,7 +32,7 @@ class Store {
 /**
  * Class representing customer
  */
-class Customer {
+export class Customer {
   constructor (name) {
     this.name = name
   }
@@ -42,7 +42,7 @@ class Customer {
  * Class representing Dependency Inversion Principle
  * Abstraction Layer between buying and paying processes
  */
-class PaymentProcessor {
+export class PaymentProcessor {
   /**
    * Define customer and payment
    * @param {string} customer
@@ -84,19 +84,19 @@ class PaymentProcessor {
   }
 }
 
-class Stripe {
+export class Stripe {
   makePayment (user, quantity) {
     console.log(`${user.name} paid for ${quantity} amounts by Stripe ($)`)
   }
 }
 
-class PayPal {
+export class PayPal {
   makePayment (user, quantity) {
     console.log(`${user.name} paid for ${quantity} amounts by PayPal (Euro)`)
   }
 }
 
-class Cash {
+export class Cash {
   makePayment (user, quantity) {
     console.log(`${user.name} paid for ${quantity} amounts in cash (Rubles)`)
   }
