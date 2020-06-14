@@ -57,9 +57,12 @@ export class PaymentProcessor {
    * Method representing Strategy Pattern for Payment
    * @param {number} quantity
    *
+   * TODO: extract quantity
+   *
    */
   pay (quantity) {
     let payment = null
+    const customer = this.customer.name
 
     switch (this.payment) {
       case 'Stripe':
@@ -80,27 +83,28 @@ export class PaymentProcessor {
       return
     }
 
-    return payment.makePayment(this.customer, quantity)
+    return payment.makePayment(customer, quantity)
   }
 }
 
 export class Stripe {
   makePayment (user, quantity) {
-    console.log(`${user.name} paid for ${quantity} amounts by Stripe ($)`)
+    console.log(`${user} paid for ${quantity} amounts by Stripe ($)`)
   }
 }
 
 export class PayPal {
   makePayment (user, quantity) {
-    console.log(`${user.name} paid for ${quantity} amounts by PayPal (Euro)`)
+    console.log(`${user} paid for ${quantity} amounts by PayPal (Euro)`)
   }
 }
 
 export class Cash {
   makePayment (user, quantity) {
-    console.log(`${user.name} paid for ${quantity} amounts in cash (Rubles)`)
+    console.log(`${user} paid for ${quantity} amounts in cash (Rubles)`)
   }
 }
 
-const buy = new Store('Olga', 'Stripe')
+/* const buy = new Store('Olga', 'Stripe')
 buy.purchaseBooks(2)
+ */

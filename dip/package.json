@@ -5,7 +5,7 @@
   "main": "dip.js",
   "scripts": {
     "start": "babel-node dip.js",
-    "test": "jest",
+    "test": "jest --coverage",
     "lint": "standard --fix"
   },
   "author": "",
